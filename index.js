@@ -16,7 +16,8 @@ const limiter = rateLimit({
 
 const api_key = process.env.API_KEY;
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = fileURLToPath(
+    import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static("public"))
@@ -41,6 +42,34 @@ app.get("/cat", (req, res) => {
         result.url = `error: no images available`
     } else {
         result.url = `https://api.skillzl.dev/cat/${randomImage}`
+        result.key = key;
+        res.header("Content-type", "application/json; charset=utf-8")
+    }
+    res.header("Content-type", "application/json; charset=utf-8")
+    if (api_key.includes(key)) {
+        res.send(JSON.stringify(result, null, 2))
+        console.log(result)
+    } else {
+        const result = {}
+        result.code = 403
+        result.message = "error: invalid api key, try again"
+        res.send(JSON.stringify(result, null, 2))
+    }
+})
+app.get("/meme", (req, res) => {
+    const key = req.query.key
+    const result = {}
+
+    result.code = 200
+
+    const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "meme"))
+    const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
+
+    if (!imageList.length) {
+        result.code = 404
+        result.url = `error: no images available`
+    } else {
+        result.url = `https://api.skillzl.dev/meme/${randomImage}`
         result.key = key;
         res.header("Content-type", "application/json; charset=utf-8")
     }
@@ -100,10 +129,10 @@ app.get("/test", (req, res) => {
         result.url = `https://api.skillzl.dev/test/${randomImage}`
         res.header("Content-type", "application/json; charset=utf-8")
     }
-        res.send(JSON.stringify(result, null, 2))
-        console.log(result)
+    res.send(JSON.stringify(result, null, 2))
+    console.log(result)
 })
 
-app.listen(port, "0.0.0.0", function () {
+app.listen(port, "0.0.0.0", function() {
     console.log(`Server listening on port ${port}\n`)
 });
