@@ -56,7 +56,7 @@ app.get("/cat", (req, res) => {
         res.send(JSON.stringify(result, null, 2))
     }
 })
-app.get("/meme", (req, res) => {
+app.get("/meme", app.get("/meme", (req, res) => {
     const key = req.query.key
     const result = {}
 
@@ -83,7 +83,7 @@ app.get("/meme", (req, res) => {
         result.message = "error: invalid api key, try again"
         res.send(JSON.stringify(result, null, 2))
     }
-})
+}))
 
 app.get("/dog", (req, res) => {
     const key = req.query.key
