@@ -1,5 +1,4 @@
-
-> <img  style="border-radius: 200px;"  src="https://japi.rest/discord/v1/user/565960314970177556/avatar?size=512"  width="20"/> skillzl<br/> image-api
+ hotsuop<br/> image-api
 
   
 A simple express server written to generate random pictures by using types.
