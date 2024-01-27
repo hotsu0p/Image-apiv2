@@ -25,7 +25,7 @@ app.use(limiter)
 app.use(cors())
 
 app.get("/", (req, res) => {
-    res.redirect('https://github.com/skillzl/image-api');
+    res.redirect('https://github.com/hotsu0p/Image-apiv2/tree/main');
 })
 
 app.get("/cat", (req, res) => {
