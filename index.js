@@ -144,7 +144,7 @@ app.get("/meme", (req, res) => {
         result.code = 404
         result.url = `error: no images available`
     } else {
-        result.url = `https://api.skillzl.dev/test/${randomImage}`
+        result.url = `https://api.skillzl.dev/meme/${randomImage}`
         res.header("Content-type", "application/json; charset=utf-8")
     }
     res.send(JSON.stringify(result, null, 2))
