@@ -29,61 +29,61 @@ app.get("/", (req, res) => {
 })
 
 app.get("/cat", (req, res) => {
-    const key = req.query.key
-    const result = {}
-
-    result.code = 200
-
-    const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "cat"))
-    const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
-
-    if (!imageList.length) {
-        result.code = 404
-        result.url = `error: no images available`
-    } else {
-        result.url = `https://api.skillzl.dev/cat/${randomImage}`
-        result.key = key;
-        res.header("Content-type", "application/json; charset=utf-8")
-    }
-    res.header("Content-type", "application/json; charset=utf-8")
-    if (api_key.includes(key)) {
-        res.send(JSON.stringify(result, null, 2))
-        console.log(result)
-    } else {
+        const key = req.query.key
         const result = {}
-        result.code = 403
-        result.message = "error: invalid api key, try again"
-        res.send(JSON.stringify(result, null, 2))
-    }
-})
-app.get("/meme", app.get("/meme", (req, res) => {
-    const key = req.query.key
-    const result = {}
 
-    result.code = 200
+        result.code = 200
 
-    const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "meme"))
-    const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
+        const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "cat"))
+        const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
 
-    if (!imageList.length) {
-        result.code = 404
-        result.url = `error: no images available`
-    } else {
-        result.url = `https://api.skillzl.dev/meme/${randomImage}`
-        result.key = key;
+        if (!imageList.length) {
+            result.code = 404
+            result.url = `error: no images available`
+        } else {
+            result.url = `https://api.skillzl.dev/cat/${randomImage}`
+            result.key = key;
+            res.header("Content-type", "application/json; charset=utf-8")
+        }
         res.header("Content-type", "application/json; charset=utf-8")
-    }
-    res.header("Content-type", "application/json; charset=utf-8")
-    if (api_key.includes(key)) {
-        res.send(JSON.stringify(result, null, 2))
-        console.log(result)
-    } else {
+        if (api_key.includes(key)) {
+            res.send(JSON.stringify(result, null, 2))
+            console.log(result)
+        } else {
+            const result = {}
+            result.code = 403
+            result.message = "error: invalid api key, try again"
+            res.send(JSON.stringify(result, null, 2))
+        }
+    })
+    /* app.get("/meme", app.get("/meme", (req, res) => {
+        const key = req.query.key
         const result = {}
-        result.code = 403
-        result.message = "error: invalid api key, try again"
-        res.send(JSON.stringify(result, null, 2))
-    }
-}))
+
+        result.code = 200
+
+        const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "meme"))
+        const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
+
+        if (!imageList.length) {
+            result.code = 404
+            result.url = `error: no images available`
+        } else {
+            result.url = `https://api.skillzl.dev/meme/${randomImage}`
+            result.key = key;
+            res.header("Content-type", "application/json; charset=utf-8")
+        }
+        res.header("Content-type", "application/json; charset=utf-8")
+        if (api_key.includes(key)) {
+            res.send(JSON.stringify(result, null, 2))
+            console.log(result)
+        } else {
+            const result = {}
+            result.code = 403
+            result.message = "error: invalid api key, try again"
+            res.send(JSON.stringify(result, null, 2))
+        }
+    })) */
 
 app.get("/dog", (req, res) => {
     const key = req.query.key
@@ -120,6 +120,24 @@ app.get("/test", (req, res) => {
     result.code = 200
 
     const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "test"))
+    const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
+
+    if (!imageList.length) {
+        result.code = 404
+        result.url = `error: no images available`
+    } else {
+        result.url = `https://api.skillzl.dev/test/${randomImage}`
+        res.header("Content-type", "application/json; charset=utf-8")
+    }
+    res.send(JSON.stringify(result, null, 2))
+    console.log(result)
+})
+app.get("/meme", (req, res) => {
+    const result = {}
+
+    result.code = 200
+
+    const imageList = fs.readdirSync(path.join(__dirname, ".", "public", "meme"))
     const randomImage = imageList[Math.floor(Math.random() * imageList.length)]
 
     if (!imageList.length) {
