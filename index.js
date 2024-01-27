@@ -41,7 +41,7 @@ app.get("/cat", (req, res) => {
             result.code = 404
             result.url = `error: no images available`
         } else {
-            result.url = `https://api.skillzl.dev/cat/${randomImage}`
+            result.url = `https://image-apiv2.vercel.app/cat/${randomImage}`
             result.key = key;
             res.header("Content-type", "application/json; charset=utf-8")
         }
@@ -98,7 +98,7 @@ app.get("/dog", (req, res) => {
         result.code = 404
         result.url = `error: no images available`
     } else {
-        result.url = `https://api.skillzl.dev/dog/${randomImage}`
+        result.url = `https://image-apiv2.vercel.app/dog/${randomImage}`
         result.key = key;
         res.header("Content-type", "application/json; charset=utf-8")
     }
@@ -126,7 +126,7 @@ app.get("/test", (req, res) => {
         result.code = 404
         result.url = `error: no images available`
     } else {
-        result.url = `https://api.skillzl.dev/test/${randomImage}`
+        result.url = `https://image-apiv2.vercel.app/test/${randomImage}`
         res.header("Content-type", "application/json; charset=utf-8")
     }
     res.send(JSON.stringify(result, null, 2))
@@ -144,7 +144,7 @@ app.get("/meme", (req, res) => {
         result.code = 404
         result.url = `error: no images available`
     } else {
-        result.url = `https://api.skillzl.dev/meme/${randomImage}`
+        result.url = `https://image-apiv2.vercel.app/meme/${randomImage}`
         res.header("Content-type", "application/json; charset=utf-8")
     }
     res.send(JSON.stringify(result, null, 2))
